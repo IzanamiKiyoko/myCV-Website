@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV</title>
+    <link href="./css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Modal hiển thị ảnh to hơn -->
+    <div id="modal" class="modal">
+        <div class="modal-content-wrapper">
+            <img class="modal-content" id="modal-img" />
+            <span class="close" onclick="closeModal()">&times;</span>
+        </div>
+    </div>
+
+
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" onclick="switchLanguage('en')" id="lang-en">
+            <div class="flag-icon flag-en"></div>
+            EN
+        </button>
+        <button class="lang-btn" onclick="switchLanguage('vi')" id="lang-vi">
+            <div class="flag-icon flag-vn"></div>
+            VI
+        </button>
+    </div>
+
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-content">
+                <div class="profile-section">
+                    <!-- Avatar -->
+                    <a href="#">
+                        <div class="avatar-container">
+                            <div class="rainbow-border">
+                                <div class="avatar-inner">
+                                    <div class="avatar-content">
+                                        <div class="image-container">
+                                            <img src="./images/avatar.webp" alt="Ảnh nhỏ" class="avatar-image"
+                                                id="avatar" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Profile Text -->
+                    <div class="profile-text">
+                        <h1 class="profile-name" id="name">--name--</h1>
+                        <p class="profile-title" id="job">--job--</p>
+                        <p class="profile-description" id="description">--description--</p>
+                    </div>
+                </div>
+
+                <!-- Header Buttons -->
+                <div class="header-buttons">
+                    <!-- English Buttons -->
+                    <div class="lang-content active" data-lang="en">
+                        <a href="#" class="btn btn-outline">
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                            Download CV
+                        </a>
+                        <a href="#" class="btn btn-primary">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            Contact Me
+                        </a>
+                    </div>
+                    <!-- Vietnamese Buttons -->
+                    <div class="lang-content" data-lang="vi">
+                        <a href="#" class="btn btn-outline">
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                            Tải CV
+                        </a>
+                        <a href="#" class="btn btn-primary">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            Liên Hệ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Contact Info -->
+        <div class="contact-card">
+            <div class="contact-content">
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon yellow">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </div>
+                        <span class="contact-text" data-lang="vi" id="email"></span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon amber">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </div>
+                        <span class="contact-text active" data-lang="en" id="phone">--phone--</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon orange">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </div>
+                        <span class="contact-text active" data-lang="en" id="location">--location--</span>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-links">
+                            <!--<a href="#" class="contact-link">
+                                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                                <span>LinkedIn</span>
+                            </a>-->
+                            <a href="#" class="contact-link github" id="github-link" target="_blank">
+                                <div class="contact-icon orange">
+                                    <i class="fa-brands fa-github"></i>
+                                </div>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <!-- English Tab List -->
+            <div class="tab-list lang-content active" data-lang="en">
+                <button class="tab-button active" onclick="showTab('introduction')">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    Introduction
+                </button>
+                <button class="tab-button" onclick="showTab('projects')">
+                    <i class="fas fa-file-code"></i>
+                    Projects
+                </button>
+            </div>
+
+            <!-- Vietnamese Tab List -->
+            <div class="tab-list lang-content" data-lang="vi">
+                <button class="tab-button active" onclick="showTab('introduction')">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    Giới Thiệu
+                </button>
+                <button class="tab-button" onclick="showTab('projects')">
+                    <i class="fas fa-file-code"></i>
+                    Dự Án
+                </button>
+            </div>
+
+            <!-- Introduction Tab -->
+            <div id="introduction" class="tab-content active">
+                <!-- About -->
+                <div class="card">
+                    <div class="card-header">
+                        <!-- English -->
+                        <h2 class="card-title lang-content active" data-lang="en">About Me</h2>
+                        <!-- Vietnamese -->
+                        <h2 class="card-title lang-content active" data-lang="vi">Giới Thiệu Bản Thân</h2>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-text" id="about-me">
+                            -- About me --
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <div class="card">
+                    <div class="card-header">
+                        <!-- English -->
+                        <h2 class="card-title lang-content active" data-lang="en">Professional Experience</h2>
+                        <!-- Vietnamese -->
+                        <h2 class="card-title lang-content active" data-lang="vi">Kinh Nghiệm Làm Việc</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="timeline" id="experience-container">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-header">
+                                    <h3 class="timeline-title">Senior Software Engineer</h3>
+                                    <span class="timeline-date">2021 - Present</span>
+                                </div>
+                                <p class="timeline-company">TechCorp Inc. • San Francisco, CA</p>
+                                <ul class="timeline-list">
+                                    <li>Led development of microservices architecture serving 2M+ daily active users
+                                    </li>
+                                    <li>Improved application performance by 40% through code optimization and
+                                        caching strategies</li>
+                                    <li>Mentored 5 junior developers and established code review best practices</li>
+                                    <li>Collaborated with product and design teams to deliver 15+ major features
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="timeline-item amber">
+                                <div class="timeline-dot amber"></div>
+                                <div class="timeline-header">
+                                    <h3 class="timeline-title">Software Engineer</h3>
+                                    <span class="timeline-date amber">2019 - 2021</span>
+                                </div>
+                                <p class="timeline-company">StartupXYZ • San Francisco, CA</p>
+                                <ul class="timeline-list">
+                                    <li>Built responsive web applications using React, TypeScript, and Node.js</li>
+                                    <li>Implemented CI/CD pipelines reducing deployment time by 60%</li>
+                                    <li>Developed RESTful APIs and integrated third-party services</li>
+                                    <li>Participated in agile development process and sprint planning</li>
+                                </ul>
+                            </div>
+
+                            <div class="timeline-item orange">
+                                <div class="timeline-dot orange"></div>
+                                <div class="timeline-header">
+                                    <h3 class="timeline-title">Junior Software Developer</h3>
+                                    <span class="timeline-date orange">2017 - 2019</span>
+                                </div>
+                                <p class="timeline-company">WebSolutions Ltd. • New York, NY</p>
+                                <ul class="timeline-list">
+                                    <li>Developed and maintained client websites using HTML, CSS, and JavaScript
+                                    </li>
+                                    <li>Collaborated with designers to implement pixel-perfect UI components</li>
+                                    <li>Fixed bugs and implemented new features based on client requirements</li>
+                                    <li>Learned modern frameworks and contributed to team knowledge sharing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="card">
+                    <div class="card-header">
+                        <!-- English -->
+                        <h2 class="card-title lang-content active" data-lang="en">Technical Skills</h2>
+                        <!-- Vietnamese -->
+                        <h2 class="card-title lang-content active" data-lang="vi">Kỹ năng</h2>
+                    </div>
+                    <div class="card-content" id="skills-container">
+                        
+
+                        <div class="skills-section">
+                            <h4 class="skills-title">Backend</h4>
+                            <div class="skills-grid">
+                                <span class="skill-badge orange">Node.js</span>
+                                <span class="skill-badge yellow">Express.js</span>
+                                <span class="skill-badge amber">Python</span>
+                                <span class="skill-badge light-yellow">PostgreSQL</span>
+                                <span class="skill-badge orange">MongoDB</span>
+                                <span class="skill-badge yellow">Redis</span>
+                                <span class="skill-badge amber">GraphQL</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <h4 class="skills-title">Tools & Technologies</h4>
+                            <div class="skills-grid">
+                                <span class="skill-badge light-yellow">AWS</span>
+                                <span class="skill-badge orange">Docker</span>
+                                <span class="skill-badge yellow">Git</span>
+                                <span class="skill-badge amber">Jenkins</span>
+                                <span class="skill-badge light-yellow">Kubernetes</span>
+                                <span class="skill-badge orange">Jest</span>
+                                <span class="skill-badge yellow">Figma</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="card">
+                    <div class="card-header">
+                        <!-- English -->
+                        <h2 class="card-title lang-content active" data-lang="en">Education</h2>
+                        <!-- Vietnamese -->
+                        <h2 class="card-title lang-content active" data-lang="vi">Học Vấn</h2>
+                    </div>
+                    <div class="card-content" id="education-container">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-header">
+                                <h3 class="timeline-title">Bachelor of Science in Computer Science</h3>
+                                <span class="timeline-date">2013 - 2017</span>
+                            </div>
+                            <p class="timeline-company">University of California, Berkeley</p>
+                            <p style="font-size: 0.875rem; color: #4b5563; margin-top: 0.25rem;">GPA: 3.8/4.0 •
+                                Magna Cum Laude</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Tab -->
+            <div id="projects" class="tab-content">
+                <!-- English Projects -->
+                <div class="lang-content active" data-lang="en">
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title">E-Commerce Platform</h3>
+                                <a href="#" class="project-link">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">
+                                    Full-stack e-commerce solution with payment integration, inventory management, and
+                                    admin dashboard.
+                                    Built to handle high traffic and provide seamless user experience.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="skill-badge yellow">React</span>
+                                    <span class="skill-badge amber">Node.js</span>
+                                    <span class="skill-badge orange">PostgreSQL</span>
+                                    <span class="skill-badge light-yellow">Stripe</span>
+                                </div>
+                                <div class="project-features">
+                                    <p>• 10,000+ active users</p>
+                                    <p>• 99.9% uptime</p>
+                                    <p>• Mobile-responsive design</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title">Task Management App</h3>
+                                <a href="#" class="project-link">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">
+                                    Collaborative project management tool with real-time updates, file sharing, and team
+                                    communication.
+                                    Designed for remote teams and agile workflows.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="skill-badge amber">Next.js</span>
+                                    <span class="skill-badge yellow">TypeScript</span>
+                                    <span class="skill-badge orange">Socket.io</span>
+                                    <span class="skill-badge light-yellow">MongoDB</span>
+                                </div>
+                                <div class="project-features">
+                                    <p>• Real-time collaboration</p>
+                                    <p>• File upload & sharing</p>
+                                    <p>• Team chat integration</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title">Weather Dashboard</h3>
+                                <a href="#" class="project-link">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">
+                                    Interactive weather application with location-based forecasts, historical data
+                                    visualization, and
+                                    customizable alerts for weather conditions.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="skill-badge yellow">Vue.js</span>
+                                    <span class="skill-badge amber">Chart.js</span>
+                                    <span class="skill-badge orange">OpenWeather API</span>
+                                    <span class="skill-badge light-yellow">PWA</span>
+                                </div>
+                                <div class="project-features">
+                                    <p>• 7-day forecasts</p>
+                                    <p>• Interactive maps</p>
+                                    <p>• Push notifications</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title">Social Media Analytics</h3>
+                                <a href="#" class="project-link">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">
+                                    Comprehensive analytics platform for social media management with automated
+                                    reporting, sentiment
+                                    analysis, and competitor tracking features.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="skill-badge amber">React</span>
+                                    <span class="skill-badge yellow">Python</span>
+                                    <span class="skill-badge orange">D3.js</span>
+                                    <span class="skill-badge light-yellow">Redis</span>
+                                </div>
+                                <div class="project-features">
+                                    <p>• Multi-platform integration</p>
+                                    <p>• AI-powered insights</p>
+                                    <p>• Custom reporting</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vietnamese Projects -->
+                <div class="lang-content" data-lang="vi">
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title">Nền Tảng Thương Mại Điện Tử</h3>
+                                <a href="#" class="project-link">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">
+                                    Giải pháp thương mại điện tử full-stack với tích hợp thanh toán, quản lý kho và
+                                    dashboard quản trị.
+                                    Được xây dựng để xử lý lưu lượng truy cập cao và cung cấp trải nghiệm người dùng
+                                    mượt mà.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="skill-badge yellow">React</span>
+                                    <span class="skill-badge amber">Node.js</span>
+                                    <span class="skill-badge orange">PostgreSQL</span>
+                                    <span class="skill-badge light-yellow">Stripe</span>
+                                </div>
+                                <div class="project-features">
+                                    <p>• 10,000+ người dùng hoạt động</p>
+                                    <p>• 99.9% thời gian hoạt động</p>
+                                    <p>• Thiết kế responsive trên mobile</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title">Ứng Dụng Quản Lý Công Việc</h3>
+                                <a href="#" class="project-link">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">
+                                    Công cụ quản lý dự án cộng tác với cập nhật thời gian thực, chia sẻ file và giao
+                                    tiếp nhóm.
+                                    Được thiết kế cho các nhóm làm việc từ xa và quy trình agile.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="skill-badge amber">Next.js</span>
+                                    <span class="skill-badge yellow">TypeScript</span>
+                                    <span class="skill-badge orange">Socket.io</span>
+                                    <span class="skill-badge light-yellow">MongoDB</span>
+                                </div>
+                                <div class="project-features">
+                                    <p>• Cộng tác thời gian thực</p>
+                                    <p>• Tải lên & chia sẻ file</p>
+                                    <p>• Tích hợp chat nhóm</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title">Bảng Điều Khiển Thời Tiết</h3>
+                                <a href="#" class="project-link">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">
+                                    Ứng dụng thời tiết tương tác với dự báo theo vị trí, trực quan hóa dữ liệu lịch sử
+                                    và
+                                    cảnh báo tùy chỉnh cho điều kiện thời tiết.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="skill-badge yellow">Vue.js</span>
+                                    <span class="skill-badge amber">Chart.js</span>
+                                    <span class="skill-badge orange">OpenWeather API</span>
+                                    <span class="skill-badge light-yellow">PWA</span>
+                                </div>
+                                <div class="project-features">
+                                    <p>• Dự báo 7 ngày</p>
+                                    <p>• Bản đồ tương tác</p>
+                                    <p>• Thông báo đẩy</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-title">Phân Tích Mạng Xã Hội</h3>
+                                <a href="#" class="project-link">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">
+                                    Nền tảng phân tích toàn diện cho quản lý mạng xã hội với báo cáo tự động, phân tích
+                                    cảm xúc
+                                    và tính năng theo dõi đối thủ cạnh tranh.
+                                </p>
+                                <div class="project-tech">
+                                    <span class="skill-badge amber">React</span>
+                                    <span class="skill-badge yellow">Python</span>
+                                    <span class="skill-badge orange">D3.js</span>
+                                    <span class="skill-badge light-yellow">Redis</span>
+                                </div>
+                                <div class="project-features">
+                                    <p>• Tích hợp đa nền tảng</p>
+                                    <p>• Thông tin chi tiết AI</p>
+                                    <p>• Báo cáo tùy chỉnh</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- English Footer -->
+            <p class="footer-text lang-content active" data-lang="en">© 2024 John Smith. Available for new
+                opportunities.</p>
+            <!-- Vietnamese Footer -->
+            <p class="footer-text lang-content" data-lang="vi">© 2024 Nguyễn Văn An. Sẵn sàng cho cơ hội mới.</p>
+        </div>
+    </footer>
+    <script type="module" src="./js/main.js"></script>
+
+
+</body>
+
+</html>
